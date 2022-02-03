@@ -1,0 +1,13 @@
+ifeq ($(m),cpu)
+COMPILER = ifort
+FLAGS = -fast -fpp -DDIPSLIP 
+NAME=program
+else ifeq ($(m),mpi)
+COMPILER = /opt/pgi/linux86-64/19.10/mpi/openmpi-3.1.3/bin/mpif90
+FLAGS =-ta=tesla:ccall -fast -DDIPSLIP -DMPI -Mpreprocess -acc -Mbackslash 
+NAME=program
+else
+COMPILER = pgfortran
+FLAGS = -Mcuda=cc35,cc50,cc60,cc70 -DDIPSLIP -fast -Mpreprocess -acc -Mbackslash 		   
+NAME=program
+endif
