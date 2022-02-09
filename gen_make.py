@@ -2,10 +2,9 @@ import mkfilegen.condensemod as cm
 import re
 import os
 import sys
-import re
 import numpy as np
 import matplotlib.pyplot as plt
-#print("********")
+
 def main(draw=False,save=False):
     s="" 
     filenames=[file for file in os.listdir() if file.endswith(".f90") or file.endswith(".for")]
@@ -79,6 +78,7 @@ def main(draw=False,save=False):
         print("Generating figures of the dependance structure.")
         cm.draw_deps(file_deps,save=save,figname="orig_structure.png")
         cm.draw_deps(nameddict,save=save,show=not save,tree=True,levels=leveldict,figname="condensed_structure.png")
+        
 if __name__=="__main__":
     args=sys.argv
     try:
